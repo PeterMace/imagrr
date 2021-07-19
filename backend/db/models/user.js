@@ -1,6 +1,7 @@
 'use strict';
 const { Validator } = require('sequelize');
 const bcrypt = require('bcryptjs');
+const { Photo } = require("./photo");
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
@@ -48,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.associate = function(models) {
-    // associations can be defined here
+    User.hasMany(models.Photo, { foreignKey: 'userId' });
   };
   //return information safe to add to a JWT
   User.prototype.toSafeObject = function() { 
