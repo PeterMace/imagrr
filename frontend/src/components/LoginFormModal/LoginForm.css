@@ -2,3 +2,30 @@ html, body, h1, h2, h3, h4, h5, h6, main, nav, div, ul, li {
     margin: 0;
     padding: 0;
   }
+
+#modal-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:300px;
+  width: 225px;
+  border-radius: 20px;
+}
+
+#modal-content button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+}
+
+#modal-content input{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+}
+
+#modal-content label{
+  text-decoration: double;
+}
