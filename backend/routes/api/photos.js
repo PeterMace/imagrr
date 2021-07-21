@@ -26,8 +26,8 @@ router.get(
   );
 
   router.post(
-    '/', photoValidations.validateCreate,
-      asyncHandler(async function(req, res) {
+    '/', //photoValidations.validateCreate,
+    asyncHandler(async function(req, res) {
         await Photo.create(req.body);
         return res.json(req.body);
     })

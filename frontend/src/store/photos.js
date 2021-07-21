@@ -39,6 +39,7 @@ export const retrievePhoto = (photoId) => async dispatch => {
   }
 
   export const createPhoto = (Photo) => async dispatch => {
+    console.log(Photo);
     const response = await csrfFetch(`/api/photos`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

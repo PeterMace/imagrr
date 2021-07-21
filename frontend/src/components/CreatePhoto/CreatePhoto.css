@@ -1,0 +1,10 @@
+.photo-form{
+    width: 200px;
+    height: 400px;
+    margin-top: 125px;
+    padding-top: 75px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+}
