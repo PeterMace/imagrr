@@ -1,0 +1,21 @@
+#image-container {
+    border: 3px solid #4D4D4D;
+    display: flex-box;
+    align-content: center;
+    justify-content: center;
+    margin: auto 20%;
+    padding: 5%;
+    margin-top: 100px;
+    border-radius: 10px;
+    background-color: #c8c8c8;
+  }
+
+.browser-image {
+    background-size: contain;
+    border: 3px solid #DFDFDF;
+    border-radius: 10px;
+    height: 67px;
+    margin: 15px;
+    width: 100px;
+  }
+
