@@ -5,6 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import PhotoBrowser from "./components/PhotoBrowser";
+import PhotoDetail from './components/PhotoDetail';
 
 function App() {
   const dispatch = useDispatch();
@@ -19,10 +20,12 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route
-            path={["/photos", "/photos/:photoId"]}
-            exact
+            path="/photos"exact
           >
             <PhotoBrowser />
+          </Route>
+          <Route path="/photos/:photoId">
+            <PhotoDetail />
           </Route>
           <Route path="/signup">
             <SignupFormPage />

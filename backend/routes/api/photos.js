@@ -16,6 +16,14 @@ router.get(
     })
   );
 
+  router.get(
+    '/:id',
+    asyncHandler(async function(req, res) {
+        const photo = await Photo.findByPk(req.params.id);
+        return res.json(photo);
+    })
+  );
+
   router.put(
     '/:id', photoValidations.validateUpdate,
     asyncHandler(async function(req, res) { 
@@ -26,10 +34,10 @@ router.get(
   );
 
   router.post(
-    '/', //photoValidations.validateCreate,
+    '/', photoValidations.validateCreate,
     asyncHandler(async function(req, res) {
-        await Photo.create(req.body);
-        return res.json(req.body);
+        const newPhoto = await Photo.create(req.body);
+        return res.json(newPhoto);
     })
   );
 
