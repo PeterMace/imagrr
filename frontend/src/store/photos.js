@@ -18,12 +18,10 @@ const load = list => ({
 
 
 export const getPhotos = () => async dispatch => {
-    console.log("photos")
     const response = await csrfFetch(`/api/photos`);
   
     if (response.ok) {
       const photos = await response.json();
-      console.log(photos, "photos")
       dispatch(load(photos));
     }
   };
@@ -31,7 +29,6 @@ export const getPhotos = () => async dispatch => {
   
 export const retrievePhoto = (photoId) => async dispatch => {
     const response = await csrfFetch(`/api/photos/${photoId}`)
-  
     if (response.ok) {
       const photo = await response.json();
       dispatch(addPhoto(photo))
@@ -39,7 +36,7 @@ export const retrievePhoto = (photoId) => async dispatch => {
   }
 
   export const createPhoto = (Photo) => async dispatch => {
-    console.log(Photo);
+
     const response = await csrfFetch(`/api/photos`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -47,8 +44,8 @@ export const retrievePhoto = (photoId) => async dispatch => {
     })
     if (response.ok) {
       const newPhoto = await response.json();
-      dispatch(addPhoto(newPhoto))
-      return newPhoto;
+      const photoResult = dispatch(addPhoto(newPhoto))
+      return photoResult;
     }
   }
 
@@ -67,7 +64,7 @@ export const retrievePhoto = (photoId) => async dispatch => {
 
 
   const initialState = {
-    list: [],
+    
   };
 
   const photoReducer = (state = initialState, action) => {
@@ -88,9 +85,6 @@ export const retrievePhoto = (photoId) => async dispatch => {
             ...state,
             [action.photo.id]: action.photo
           };
-          const photoList = newState.list.map(id => newState[id]);
-          photoList.push(action.photo);
-          newState.list = photoList;
           return newState;
         }
         return {
