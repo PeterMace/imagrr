@@ -50,6 +50,11 @@ export const createPhoto = (Photo) => async dispatch => {
     const photoResult = await dispatch(addPhoto(newPhoto))
     return photoResult;
   }
+  else{
+    console.log("NO PHOTO CREATED")
+    const errorResponse = await response.json();
+    return errorResponse;
+  }
 }
 
 export const editPhoto = (photo) => async dispatch => {

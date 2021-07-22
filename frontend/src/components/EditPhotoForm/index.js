@@ -19,6 +19,7 @@ const EditPhotoForm = ({photo, hideForm}) => {
     const updateTitle = (e) => setTitle(e.target.value);
     const updateImageUrl = (e) => setImageUrl(e.target.value);
     const updateDescription = (e) => setDescription(e.target.value);
+    const [errors, setErrors] = useState([]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,11 +32,17 @@ const EditPhotoForm = ({photo, hideForm}) => {
             description,
         }
     
-        const dispatchPhoto = await dispatch(editPhoto(payload));
 
-        if (dispatchPhoto) {
-            hideForm();
-          history.push(`/photos/${id}`);
+        try{
+            const dispatchPhoto = await dispatch(editPhoto(payload));
+            if (dispatchPhoto) {
+                 hideForm();
+              history.push(`/photos/${id}`);
+            }
+        } catch(err){
+            const errorResponse = await err.json();
+            const errorsArray = errorResponse.errors.filter(error => error !=="Invalid value")
+            setErrors(errorsArray)
         }
       };
 
@@ -44,6 +51,11 @@ const EditPhotoForm = ({photo, hideForm}) => {
         <>
             { userId && (
                 <form onSubmit={handleSubmit} className='photo-form'>
+                    <h3> Update photo</h3>
+                    {errors.map((error)=>(
+                        <p key={error}>{error}</p>
+                    ))}
+
                     <input
                         type="text"
                         placeholder="Title"

@@ -14,6 +14,7 @@ const CreatePhoto = () => {
     const [title, setTitle] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [description, setDescription] = useState('');
+    const [errors, setErrors] = useState([]);
 
     const updateTitle = (e) => setTitle(e.target.value);
     const updateImageUrl = (e) => setImageUrl(e.target.value);
@@ -28,12 +29,17 @@ const CreatePhoto = () => {
         imageUrl,
         description,
         };
-    
-        const dispatchPhoto = await dispatch(createPhoto(payload));
-        console.log(dispatchPhoto.photo);
-        if (dispatchPhoto) {
-          history.push(`/photos/${dispatchPhoto.photo.id}`);
+        try{
+            const createdPhoto = await dispatch(createPhoto(payload));
+            if (createdPhoto) {
+              history.push(`/photos/${createdPhoto.photo.id}`);
+            }
+        } catch (err){
+            const errorResponse = await err.json();
+            const errorsArray = errorResponse.errors.filter(error => error !=="Invalid value")
+            setErrors(errorsArray)
         }
+
       };
 
     
@@ -42,6 +48,9 @@ const CreatePhoto = () => {
             { userId && (
                 <form onSubmit={handleSubmit} className='photo-form'>
                     <h3> Upload a new photo </h3>
+                    {errors.map((error)=>(
+                        <p key={error}>{error}</p>
+                    ))}
                     <input
                         type="text"
                         placeholder="Title"
