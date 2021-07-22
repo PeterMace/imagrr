@@ -26,6 +26,7 @@ export const getPhotos = () => async dispatch => {
     if (response.ok) {
       const photos = await response.json();
       dispatch(load(photos));
+
     }
   };
 
@@ -51,11 +52,11 @@ export const createPhoto = (Photo) => async dispatch => {
   }
 }
 
-export const editPhoto = (Photo) => async dispatch => {
-    const response = await csrfFetch(`/api/photos/${Photo.id}`, {
+export const editPhoto = (photo) => async dispatch => {
+    const response = await csrfFetch(`/api/photos/${photo.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(Photo),
+      body: JSON.stringify(photo),
     })
     if (response.ok) {
       const editedPhoto = await response.json();
@@ -64,15 +65,15 @@ export const editPhoto = (Photo) => async dispatch => {
     }
   }
 
-export const deletePhoto = (Photo) => async dispatch => {
-    const response = await csrfFetch(`/api/photos/${Photo.id}`, {
+export const deletePhoto = (photo) => async dispatch => {
+    const response = await csrfFetch(`/api/photos/${photo.id}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(Photo),
+      body: JSON.stringify(photo),
     })
     if (response.ok) {
-      const deletedPhoto = await response.json();
-      dispatch(removePhoto(deletedPhoto))
+      dispatch(removePhoto(photo.id))
+      return true;
     }
   }
 
@@ -109,7 +110,7 @@ export const deletePhoto = (Photo) => async dispatch => {
       case REMOVE_ONE: {
           const newState = { ...state };
           console.log("photoId", action.photoId)
-          delete newState[action.photoId];
+          delete newState[ action.photoId];
           return newState;
         }
       case UPDATE_ONE:{

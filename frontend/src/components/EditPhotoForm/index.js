@@ -5,14 +5,12 @@ import { useHistory } from 'react-router-dom';
 import './EditPhotoForm.css';
 
 
-const EditPhotoForm = (photo, hideForm) => {
+const EditPhotoForm = ({photo, hideForm}) => {
     //const photos = useSelector(state => state.photos);
-    const id = photo.photo.id;
+    const id = photo.id;
     const userId = useSelector(state => state.session.user?.id);
     const dispatch = useDispatch();
     const history = useHistory();
-
-    const editFormClose = photo.hideForm;
 
     const [title, setTitle] = useState('');
     const [imageUrl, setImageUrl] = useState('');
@@ -36,7 +34,7 @@ const EditPhotoForm = (photo, hideForm) => {
         const dispatchPhoto = await dispatch(editPhoto(payload));
 
         if (dispatchPhoto) {
-          editFormClose();
+            hideForm();
           history.push(`/photos/${id}`);
         }
       };
