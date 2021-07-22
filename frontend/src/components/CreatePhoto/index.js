@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { createPhoto, getPhotos } from '../../store/photos';
+import { createPhoto, } from '../../store/photos';
 import { useHistory } from 'react-router-dom';
 import './CreatePhoto.css';
 
