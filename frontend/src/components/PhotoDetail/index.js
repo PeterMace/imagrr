@@ -24,15 +24,11 @@ export const PhotoDetail = () => {
         fetchData();
     }, [dispatch, photoId, ]);
 
-    const handleEdit =  (e) => {
-        e.preventDefault();
-        history.push(`/photos/${photoId}/edit`);
-    }
 
     const handleDelete = async (e) => {
         e.preventDefault();
         const dispatchPhoto = await dispatch(deletePhoto(selectedPhoto));
-        history.push(`/photos/`);
+        history.push("/photos");
     }
 
     let content = null;
@@ -48,7 +44,7 @@ export const PhotoDetail = () => {
             <h4> {selectedPhoto.title} </h4>
             <img src={selectedPhoto.imageUrl} />
             <p>{selectedPhoto.description}</p>
-            {selectedPhoto.userId === userId ? <button onClick={(e) => setShowEditForm(!e.target.value)}>Edit Photo</button> : null}
+            {selectedPhoto.userId === userId ? <button onClick={() => setShowEditForm(!showEditForm)}>Edit Photo</button> : null}
             {selectedPhoto.userId === userId ? <button onClick={handleDelete}>Delete Photo</button> : null}
             {content}
         </div>
