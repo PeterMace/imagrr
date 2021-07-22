@@ -38,6 +38,10 @@ export const PhotoDetail = () => {
           )
         }
     
+    if(!selectedPhoto){
+        return null;
+    }
+
     return (
         <div className="photo-detail">
             {console.log(photos, "photo")}

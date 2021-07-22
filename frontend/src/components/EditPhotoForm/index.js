@@ -12,9 +12,9 @@ const EditPhotoForm = ({photo, hideForm}) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const [title, setTitle] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
-    const [description, setDescription] = useState('');
+    const [title, setTitle] = useState(photo.title);
+    const [imageUrl, setImageUrl] = useState(photo.imageUrl);
+    const [description, setDescription] = useState(photo.description);
 
     const updateTitle = (e) => setTitle(e.target.value);
     const updateImageUrl = (e) => setImageUrl(e.target.value);
