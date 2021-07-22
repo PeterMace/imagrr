@@ -99,6 +99,12 @@ export const deletePhoto = (Photo) => async dispatch => {
           };
           return newState;
         }
+        return {
+          ...state,
+          [action.photo.id]: {
+            ...action.photo,
+          }
+        };
       }
       case REMOVE_ONE: {
           const newState = { ...state };

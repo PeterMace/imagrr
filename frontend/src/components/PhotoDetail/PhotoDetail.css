@@ -1,14 +1,3 @@
-.photo-form{
-    width: 200px;
-    height: 400px;
-    margin-top: 125px;
-    padding-top: 75px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: auto;
-    box-shadow: 1px 1px .4em rgb(36, 36, 36)
-}
 
 .photo-detail{
     justify-content: center;

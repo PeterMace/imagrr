@@ -41,6 +41,7 @@ const CreatePhoto = () => {
         <>
             { userId && (
                 <form onSubmit={handleSubmit} className='photo-form'>
+                    <h3> Upload a new photo </h3>
                     <input
                         type="text"
                         placeholder="Title"
