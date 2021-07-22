@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { retrievePhoto, deletePhoto } from '../../store/photos';
+import  EditPhotoForm from './../EditPhotoForm';
 import './PhotoDetail.css';
 
 export const PhotoDetail = () => {
@@ -14,7 +15,7 @@ export const PhotoDetail = () => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const [showFormButtons, setShowFormButtons] = useState(false);
+    const [showEditForm, setShowEditForm] = useState(false);
     
     useEffect(() => {
         async function fetchData() {
@@ -33,6 +34,13 @@ export const PhotoDetail = () => {
         const dispatchPhoto = await dispatch(deletePhoto(selectedPhoto));
         history.push(`/photos/`);
     }
+
+    let content = null;
+    if (showEditForm){
+        content = (
+            <EditPhotoForm photo={selectedPhoto} hideForm={() => setShowEditForm(false)} />
+          )
+        }
     
     return (
         <div className="photo-detail">
@@ -40,8 +48,9 @@ export const PhotoDetail = () => {
             <h4> {selectedPhoto.title} </h4>
             <img src={selectedPhoto.imageUrl} />
             <p>{selectedPhoto.description}</p>
-            {selectedPhoto.userId === userId ? <button onClick={handleEdit}>Edit Photo</button> : null}
+            {selectedPhoto.userId === userId ? <button onClick={(e) => setShowEditForm(!e.target.value)}>Edit Photo</button> : null}
             {selectedPhoto.userId === userId ? <button onClick={handleDelete}>Delete Photo</button> : null}
+            {content}
         </div>
     )
 }

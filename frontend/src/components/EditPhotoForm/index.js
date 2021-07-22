@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { createPhoto, getPhotos } from '../../store/photos';
+import { editPhoto } from '../../store/photos';
 import { useHistory } from 'react-router-dom';
-import './CreatePhoto.css';
+import './EditPhotoForm.css';
 
 
-const EditPhotoForm = () => {
+const EditPhotoForm = (photo, hideForm) => {
     //const photos = useSelector(state => state.photos);
+    const id = photo.photo.id;
     const userId = useSelector(state => state.session.user?.id);
     const dispatch = useDispatch();
     const history = useHistory();
+
+    const editFormClose = photo.hideForm;
 
     const [title, setTitle] = useState('');
     const [imageUrl, setImageUrl] = useState('');
@@ -23,16 +26,18 @@ const EditPhotoForm = () => {
         e.preventDefault();
     
         const payload = {
-        userId,
-        title,
-        imageUrl,
-        description,
-        };
+            id,
+            userId,
+            title,
+            imageUrl,
+            description,
+        }
     
-        const dispatchPhoto = await dispatch(createPhoto(payload));
-        console.log(dispatchPhoto.photo);
+        const dispatchPhoto = await dispatch(editPhoto(payload));
+
         if (dispatchPhoto) {
-          history.push(`/photos/${dispatchPhoto.photo.id}`);
+          editFormClose();
+          history.push(`/photos/${id}`);
         }
       };
 
@@ -56,7 +61,7 @@ const EditPhotoForm = () => {
                     placeholder="description"
                     value={description}
                     onChange={updateDescription} />
-                    <button type="submit">Create new photo</button>
+                    <button type="submit">Update photo</button>
                 </form>)
             }
         </>
