@@ -18,7 +18,6 @@ const PhotoBrowser = () => {
 
     useEffect(() => {
       async function fetchData() {
-
         const response = await dispatch(getPhotos());
       }
       fetchData();

@@ -1,0 +1,22 @@
+.photo-form{
+    width: 200px;
+    height: 400px;
+    margin-top: 125px;
+    padding-top: 75px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+}
+
+.photo-detail{
+    width: 200px;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-detail img{
+    width: 180px;
+    height: 300px;
+}
