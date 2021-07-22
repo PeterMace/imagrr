@@ -1,0 +1,62 @@
+const express = require('express');
+const asyncHandler = require('express-async-handler');
+const {Photo} = require('./../../db/models');
+
+
+const { check, validationResult } = require('express-validator');
+const photoValidations = require('../../validations/photos');
+
+const router = express.Router();
+
+router.get(
+    '/',
+    asyncHandler(async function(req, res) {
+        const photos = await Photo.findAll();
+        return res.json(photos);
+    })
+  );
+
+  router.get(
+    '/:id',
+    asyncHandler(async function(req, res) {
+        const photo = await Photo.findByPk(req.params.id);
+        return res.json(photo);
+    })
+  );
+
+  router.put(
+    '/:id', photoValidations.validateUpdate,
+    asyncHandler(async function(req, res, next) { 
+      try{
+        const updatedPhoto = await Photo.findByPk(req.params.id);
+        await updatedPhoto.update(req.body);
+        return res.json(updatedPhoto);
+      } catch (err){
+        next(err);
+      }
+    })
+  );
+
+  router.post(
+    '/', photoValidations.validateCreate,
+    asyncHandler(async function(req, res, next) {
+      try{
+        const newPhoto = await Photo.create(req.body);
+        return res.json(newPhoto);
+      } catch (err){
+        next(err);
+      }
+    })
+  );
+
+  router.delete(
+    '/:id', 
+    asyncHandler(async function(req, res) {
+      await Photo.destroy({
+          where: { id : req.params.id }
+        });
+     return res.json(req.body);
+  })
+);
+
+module.exports = router;
