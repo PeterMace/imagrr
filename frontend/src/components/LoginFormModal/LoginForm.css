@@ -15,15 +15,13 @@ html, body, h1, h2, h3, h4, h5, h6, main, nav, div, ul, li {
 #modal-content button{
   display: flex;
   justify-content: center;
-  align-items: center;
-  border-radius: 4px;
+  align-items: center;;
 }
 
 #modal-content input{
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 4px;
 }
 
 #modal-content label{

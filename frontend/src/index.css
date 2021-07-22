@@ -1,1 +1,5 @@
 /* TODO Add site wide styles */
+
+button, input{
+    border-radius: 4px
+}

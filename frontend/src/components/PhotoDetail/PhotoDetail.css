@@ -7,16 +7,25 @@
     align-items: center;
     text-align: center;
     margin: auto;
+    box-shadow: 1px 1px .4em rgb(36, 36, 36)
 }
 
 .photo-detail{
-    width: 200px;
-    height: 400px;
     justify-content: center;
     align-items: center;
+    margin: 10% 20%;
+    box-shadow: 1px 1px .4em rgb(36, 36, 36),
 }
 
 .photo-detail img{
-    width: 180px;
-    height: 300px;
+    margin:auto;
+    width: 40em;
+    height: auto;
+    align-items: center;
+    margin: auto;
+    box-shadow: 1px 1px .4em rgb(36, 36, 36)
+}
+
+.photo-detail button{
+    box-shadow: 1px 1px .4em rgb(36, 36, 36)
 }

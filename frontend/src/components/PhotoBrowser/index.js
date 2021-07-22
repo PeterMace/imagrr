@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Route, useParams } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { getPhotos } from '../../store/photos';
 import CreatePhoto  from './../CreatePhoto/';
 
@@ -10,18 +10,16 @@ import './PhotoBrowser.css';
 const PhotoBrowser = () => {
     const dispatch = useDispatch();
 
-    const { photoId } = useParams();
-
     const photos = useSelector(state => {
         return Object.values(state.photos)
     });
 
     useEffect(() => {
       async function fetchData() {
-        const response = await dispatch(getPhotos());
+        await dispatch(getPhotos());
       }
       fetchData();
-    }, [])
+    }, [dispatch])
 
     if (!photos.length) {
         return null;
