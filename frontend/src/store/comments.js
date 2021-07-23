@@ -5,9 +5,9 @@ const ADD_ONE = 'comments/ADD_ONE';
 const REMOVE_ONE = 'comments/REMOVE_ONE'
 const UPDATE_ONE = 'comments/UPDATE_ONE'
 
-const load = list => ({
+const load = comments => ({
     type: LOAD,
-    list,
+    comments,
   });
   
 const addComment = comment => ({
@@ -20,8 +20,8 @@ const removeComment = commentId => ({
     commentId,
   });
 
-export const getComments = () => async dispatch => {
-    const response = await csrfFetch(`/api/comments`);
+export const getComments = (photoId) => async dispatch => {
+    const response = await csrfFetch(`/api/photos/${photoId}/comments`);
   
     if (response.ok) {
       const comments = await response.json();
@@ -86,16 +86,16 @@ export const deleteComment = (comment) => async dispatch => {
 
   const commentReducer = (state = initialState, action) => {
     switch (action.type) {
-      case LOAD: {
-        const allComments = {};
-        action.list.forEach(comment => {
-            allComments[comment.id] = comment;
-        });
-        return {
-          ...allComments,
-          ...state,
+     case LOAD: {
+            const allComments = {};
+            action.comments.forEach(comment => {
+                allComments[comment.id] = comment;
+            });
+            return {
+              ...allComments,
+              ...state,
         };
-      }
+        }
       case ADD_ONE: {
         if (!state[action.comment.id]) {
           const newState = {

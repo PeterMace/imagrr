@@ -42,10 +42,9 @@ router.get(
   router.delete(
     '/:id', 
     asyncHandler(async function(req, res) {
-      await Comment.destroy({
-          where: { id : req.params.id }
-        });
-     return res.json(req.body);
+    const comment = await Comment.findByPk(req.params.id);
+    comment.destroy();
+    return res.json(req.body);
   })
 );
 

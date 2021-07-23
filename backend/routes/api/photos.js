@@ -25,6 +25,17 @@ router.get(
     })
   );
 
+  router.get(
+    '/:id/comments',
+    asyncHandler(async function(req, res) {
+        const comments = await Comment.findAll(
+        {
+          where: {photoId: req.params.id}
+        });
+        return res.json(comments);
+    })
+  );
+
   router.put(
     '/:id', photoValidations.validateUpdate,
     asyncHandler(async function(req, res, next) { 
@@ -53,10 +64,9 @@ router.get(
   router.delete(
     '/:id', 
     asyncHandler(async function(req, res) {
-      await Photo.destroy({
-          where: { id : req.params.id }
-        });
-     return res.json(req.body);
+      const photo = await Photo.findByPk(req.params.id);
+      await photo.destroy();
+      return res.json(req.body);
   })
 );
 

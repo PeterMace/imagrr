@@ -3,7 +3,7 @@ const { AlbumPhoto } = require("./albumphoto");
 const { User } = require("./album");
 module.exports = (sequelize, DataTypes) => {
   const Album = sequelize.define('Album', {
-    usedId: DataTypes.INTEGER,
+    userId: DataTypes.INTEGER,
     title: {
       type: DataTypes.STRING,
       allowNull: false,

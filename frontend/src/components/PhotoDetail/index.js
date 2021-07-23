@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { retrievePhoto, deletePhoto } from '../../store/photos';
 import EditPhotoForm from './../EditPhotoForm';
 import CreateCommentForm from '../CreateCommentForm';
+import CommentSection from '../CommentSection';
 import './PhotoDetail.css';
 
 export const PhotoDetail = () => {
@@ -52,6 +53,7 @@ export const PhotoDetail = () => {
             {selectedPhoto.userId === userId ? <button onClick={() => setShowEditForm(!showEditForm)}>Edit Photo</button> : null}
             {selectedPhoto.userId === userId ? <button onClick={handleDelete}>Delete Photo</button> : null}
             {content}
+            <CommentSection photoId = {selectedPhoto.id} />
             <CreateCommentForm photoId = {selectedPhoto.id} />
         </div>
     )
