@@ -83,7 +83,7 @@ router.post(
 );
 
 router.get('/:id/comments', asyncHandler(async function(req, res) {
-  const items = await ItemsRepository.itemsByPokemonId(req.params.id);
+  const items = await Comments.findAll({where:{photoId: req.params.id}});
   return res.json(items);
 }));
 
