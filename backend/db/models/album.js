@@ -14,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
   }, {});
   Album.associate = function(models) {
-    Album.belongsTo(models.User, { foreignKey: 'userId' });
-    Album.hasMany(models.AlbumPhoto, { foreignKey: 'albumId' });
+    Album.belongsTo(models.User, { foreignKey: 'userId', onDelete: 'cascade',  hooks: true });
+    Album.hasMany(models.AlbumPhoto, { foreignKey: 'albumId', onDelete: 'cascade',  hooks: true });
   };
   return Album;
 };
