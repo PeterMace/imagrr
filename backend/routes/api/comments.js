@@ -4,7 +4,7 @@ const {Comment} = require('./../../db/models');
 
 
 const { check, validationResult } = require('express-validator');
-const commentValidations = require('../../validations/comments');
+// const commentValidations = require('../../validations/comments');
 
 const router = express.Router();
 
@@ -25,8 +25,9 @@ router.get(
   );
 
   router.put(
-    '/:id', //commentValidations.validateUpdate,
+    '/:id', 
     asyncHandler(async function(req, res, next) { 
+        console.log("route hit");
       try{
         const updatedComment = await Comment.findByPk(req.params.id);
         await updatedComment.update(req.body);
