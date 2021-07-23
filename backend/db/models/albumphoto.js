@@ -7,8 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     albumId: DataTypes.INTEGER
   }, {});
   AlbumPhoto.associate = function(models) {
-    AlbumPhoto.belongsTo(models.Album, { foreignKey: 'albumId', onDelete: 'cascade',  hooks: true });
-    AlbumPhoto.belongsTo(models.Photo, { foreignKey: 'photoId', onDelete: 'cascade', hooks: true });
+    AlbumPhoto.belongsTo(models.Album, { foreignKey: 'albumId',  hooks: true });
+    AlbumPhoto.belongsTo(models.Photo, { foreignKey: 'photoId', hooks: true });
   };
   return AlbumPhoto;
 };
