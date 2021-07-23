@@ -14,8 +14,8 @@ const userId = check('userId')
   .isInt({ min: 0 })
   .withMessage('You must be signed in.');
 const content = check('content')
-  .isLength({ min: 0, max:255 })
-  .withMessage('Comment must be less than 255 characters');
+  .isLength({ min: 10, max:255 })
+  .withMessage('Comment must be more than 10 but less than 255 characters');
 
   exports.validateCreate = [
     userId,
