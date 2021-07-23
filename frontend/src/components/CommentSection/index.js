@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getComments, } from '../../store/comments';
 import { useHistory } from 'react-router-dom';
+import CommentDetail from '../CommentDetail';
 
 
 const CommentSection = ({photoId}) => {
@@ -29,14 +30,12 @@ const CommentSection = ({photoId}) => {
     if (!comments.length) {
         return null;
     }
-
     return (
       <main>
-        <div id="image-container">
+        <div>
           { comments.map((comment) => {
             return (
-              <p key={comment.id}> {comment.content}
-              </p>
+              <CommentDetail comment={comment} />
             );
           })}
         </ div>
