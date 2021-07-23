@@ -21,7 +21,13 @@ export const PhotoDetail = () => {
     
     useEffect(() => {
         async function fetchData() {
-            const response = await dispatch(retrievePhoto(photoId));
+            try{
+                const response = await dispatch(retrievePhoto(photoId));
+            } catch (err){
+                console.log("Photo of specified ID cannot be retrieved at this time");
+                history.push("/photos");
+            }
+
         }
         fetchData();
     }, [dispatch, photoId, ]);

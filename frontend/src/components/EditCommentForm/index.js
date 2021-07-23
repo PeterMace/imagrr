@@ -27,7 +27,6 @@ const EditPhotoForm = ({comment, hideForm}) => {
             const dispatchComment = await dispatch(editComment(payload));
             if (dispatchComment) {
                 hideForm();
-                history.push(`/photos/${id}`);
             }
         } catch(err){
             const errorResponse = await err.json();
