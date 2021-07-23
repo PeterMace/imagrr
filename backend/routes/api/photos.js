@@ -3,9 +3,8 @@ const asyncHandler = require('express-async-handler');
 const {Photo} = require('./../../db/models');
 const {Comment} = require('./../../db/models');
 
-
-const { check, validationResult } = require('express-validator');
 const photoValidations = require('../../validations/photos');
+const commentValidations = require('../../validations/comments');
 
 const router = express.Router();
 
@@ -26,7 +25,7 @@ router.get(
   );
 
   router.get(
-    '/:id/comments',
+    '/:id/comments', 
     asyncHandler(async function(req, res) {
         const comments = await Comment.findAll(
         {
@@ -71,7 +70,7 @@ router.get(
 );
 
 router.post(
-  '/:id/comments', //commentValidations.validateCreate,
+  '/:id/comments', commentValidations.validateCreate,
   asyncHandler(async function(req, res, next) {
     console.log(req.body);
     try{

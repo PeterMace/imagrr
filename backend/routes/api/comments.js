@@ -2,14 +2,12 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const {Comment} = require('./../../db/models');
 
-
-const { check, validationResult } = require('express-validator');
-// const commentValidations = require('../../validations/comments');
+const commentValidations = require('../../validations/comments');
 
 const router = express.Router();
 
 router.get(
-    '/',
+    '/', 
     asyncHandler(async function(req, res) {
         const comments = await Comment.findAll();
         return res.json(comments);
@@ -25,7 +23,7 @@ router.get(
   );
 
   router.put(
-    '/:id', 
+    '/:id', commentValidations.validateUpdate,
     asyncHandler(async function(req, res, next) { 
         console.log("route hit");
       try{
