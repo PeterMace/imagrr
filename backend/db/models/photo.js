@@ -1,5 +1,6 @@
 'use strict';
 const { User } = require("./user");
+const { Comments } = require("./comment");
 module.exports = (sequelize, DataTypes) => {
   const Photo = sequelize.define('Photo', {
     userId: {
@@ -27,6 +28,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Photo.associate = function(models) {
     Photo.belongsTo(models.User, { foreignKey: 'userId' });
+    Photo.hasMany(models.AlbumPhoto, { foreignKey: 'albumId',  onDelete: 'cascade'  });
+    Photo.hasMany(models.Comment, { foreignKey: 'photoId',  onDelete: 'cascade'  });
   };
   return Photo;
 };

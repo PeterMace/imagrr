@@ -1,36 +1,36 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const {Photo} = require('./../../db/models');
+const {Album} = require('./../../db/models');
 
 
 const { check, validationResult } = require('express-validator');
-const photoValidations = require('../../validations/photos');
+const albumValidations = require('../../validations/albums');
 
 const router = express.Router();
 
 router.get(
     '/',
     asyncHandler(async function(req, res) {
-        const photos = await Photo.findAll();
-        return res.json(photos);
+        const Albums = await Album.findAll();
+        return res.json(Albums);
     })
   );
 
   router.get(
     '/:id',
     asyncHandler(async function(req, res) {
-        const photo = await Photo.findByPk(req.params.id);
-        return res.json(photo);
+        const Album = await Album.findByPk(req.params.id);
+        return res.json(Album);
     })
   );
 
   router.put(
-    '/:id', photoValidations.validateUpdate,
+    '/:id', albumValidations.validateUpdate,
     asyncHandler(async function(req, res, next) { 
       try{
-        const updatedPhoto = await Photo.findByPk(req.params.id);
-        await updatedPhoto.update(req.body);
-        return res.json(updatedPhoto);
+        const updatedAlbum = await Album.findByPk(req.params.id);
+        await updatedAlbum.update(req.body);
+        return res.json(updatedAlbum);
       } catch (err){
         next(err);
       }
@@ -38,11 +38,11 @@ router.get(
   );
 
   router.post(
-    '/', photoValidations.validateCreate,
+    '/', albumValidations.validateCreate,
     asyncHandler(async function(req, res, next) {
       try{
-        const newPhoto = await Photo.create(req.body);
-        return res.json(newPhoto);
+        const newAlbum = await Album.create(req.body);
+        return res.json(newAlbum);
       } catch (err){
         next(err);
       }
@@ -52,7 +52,7 @@ router.get(
   router.delete(
     '/:id', 
     asyncHandler(async function(req, res) {
-      await Photo.destroy({
+      await Album.destroy({
           where: { id : req.params.id }
         });
      return res.json(req.body);
