@@ -1,6 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const {Photo} = require('./../../db/models');
+const {Comment} = require('./../../db/models');
 
 
 const { check, validationResult } = require('express-validator');
@@ -21,6 +22,17 @@ router.get(
     asyncHandler(async function(req, res) {
         const photo = await Photo.findByPk(req.params.id);
         return res.json(photo);
+    })
+  );
+
+  router.get(
+    '/:id/comments',
+    asyncHandler(async function(req, res) {
+        const comments = await Comment.findAll(
+        {
+          where: {photoId: req.params.id}
+        });
+        return res.json(comments);
     })
   );
 
@@ -52,11 +64,29 @@ router.get(
   router.delete(
     '/:id', 
     asyncHandler(async function(req, res) {
-      await Photo.destroy({
-          where: { id : req.params.id }
-        });
-     return res.json(req.body);
+      const photo = await Photo.findByPk(req.params.id);
+      await photo.destroy();
+      return res.json(req.body);
   })
 );
+
+router.post(
+  '/:id/comments', //commentValidations.validateCreate,
+  asyncHandler(async function(req, res, next) {
+    console.log(req.body);
+    try{
+      const newComment = await Comment.create(req.body);
+      return res.json(newComment);
+    } catch (err){
+      next(err);
+    }
+  })
+);
+
+router.get('/:id/comments', asyncHandler(async function(req, res) {
+  const items = await ItemsRepository.itemsByPokemonId(req.params.id);
+  return res.json(items);
+}));
+
 
 module.exports = router;

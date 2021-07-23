@@ -2,6 +2,8 @@
 const { Validator } = require('sequelize');
 const bcrypt = require('bcryptjs');
 const { Photo } = require("./photo");
+const { Album } = require("./album");
+const { Comment } = require("./comment");
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
@@ -50,6 +52,8 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = function(models) {
     User.hasMany(models.Photo, { foreignKey: 'userId' });
+    User.hasMany(models.Album, { foreignKey: 'userId' });
+    User.hasMany(models.Comment, { foreignKey: 'userId' });
   };
   //return information safe to add to a JWT
   User.prototype.toSafeObject = function() { 
