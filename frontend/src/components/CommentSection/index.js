@@ -11,13 +11,12 @@ const CommentSection = ({photoId}) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const [content, setContent] = useState('');
-    const [errors, setErrors] = useState([]);
 
 
     const comments = useSelector(state => {
-        return Object.values(state.comments)
+        return Object.values(state.comments).filter(comment => comment.photoId === photoId);
     });
+
 
     useEffect(() => {
         async function fetchData() {

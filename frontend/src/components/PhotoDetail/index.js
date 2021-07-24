@@ -35,7 +35,7 @@ export const PhotoDetail = () => {
 
     const handleDelete = async (e) => {
         e.preventDefault();
-        const dispatchPhoto = await dispatch(deletePhoto(selectedPhoto));
+        await dispatch(deletePhoto(selectedPhoto));
         history.push("/photos");
     }
 
