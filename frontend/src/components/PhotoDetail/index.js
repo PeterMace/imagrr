@@ -30,7 +30,7 @@ export const PhotoDetail = () => {
 
         }
         fetchData();
-    }, [dispatch, photoId, history]);
+    }, [dispatch, photoId, ]);
 
 
     const handleDelete = async (e) => {
@@ -53,7 +53,6 @@ export const PhotoDetail = () => {
     return (
         <div className="photo-detail-container">
             <div className="photo-detail">
-                {console.log(photos, "photo")}
                 <h4> {selectedPhoto.title} </h4>
                 <img src={selectedPhoto.imageUrl} alt="" />
                 <p>{selectedPhoto.description}</p>
