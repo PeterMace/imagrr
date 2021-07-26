@@ -24,7 +24,7 @@ The page will reload if you make edits.
 You will also see any lint errors in the console.
 
 
-#Technical Implementation
+# Technical Implementation
 
 The following is a snippet of code from the CommentDetail component. This component is meant to display the contents of each comment while also restricting edit and delete functionality to the comment's owner. Optional chaining had to be implemented to prevent errors with permission checks.
 
