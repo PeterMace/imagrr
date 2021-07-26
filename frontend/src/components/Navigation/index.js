@@ -25,7 +25,7 @@ function Navigation({ isLoaded }){
   return (
     <ul className="nav-bar">
       <li>
-        <NavLink exact to="/">Home</NavLink>
+        <NavLink exact to="/">Imagrr</NavLink>
         <NavLink exact to="/photos">Browse and Upload</NavLink>
         {isLoaded && sessionLinks}
       </li>

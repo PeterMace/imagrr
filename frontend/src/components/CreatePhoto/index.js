@@ -46,7 +46,7 @@ const CreatePhoto = () => {
     return (
         <>
             { userId && (
-                <form onSubmit={handleSubmit} className='photo-form'>
+                <form onSubmit={handleSubmit} className='form'>
                     <h3> Upload a new photo </h3>
                     {errors.map((error)=>(
                         <p key={error}>{error}</p>

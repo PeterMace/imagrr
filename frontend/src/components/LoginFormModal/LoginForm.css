@@ -7,8 +7,8 @@ html, body, h1, h2, h3, h4, h5, h6, main, nav, div, ul, li {
   display: flex;
   justify-content: center;
   align-items: center;
-  height:300px;
-  width: 225px;
+  height:20em;
+  width: 40em;
   border-radius: 20px;
 }
 
@@ -26,4 +26,10 @@ html, body, h1, h2, h3, h4, h5, h6, main, nav, div, ul, li {
 
 #modal-content label{
   text-decoration: double;
+}
+
+.profile-dropdown{
+  display: block;
+  margin-top: 1em;
+  flex-direction: column;
 }

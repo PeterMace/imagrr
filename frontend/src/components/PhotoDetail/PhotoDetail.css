@@ -1,20 +1,40 @@
+.photo-detail-container{
+    box-shadow: 1px 1px .4em rgb(36, 36, 36);
+    border-radius: 2em;
+    width: 60%;
+    margin: auto 20%;
+    margin-top: 1em;
+    padding: 1em;
+    background-color: rgb(69, 75, 75);
+}
 
 .photo-detail{
+    display:flexbox;
     justify-content: center;
     align-items: center;
-    margin: 10% 20%;
-    box-shadow: 1px 1px .4em rgb(36, 36, 36),
+    width: 80%;
+    margin: 5% 5%;
+    box-shadow: 1px 1px .4em rgb(36, 36, 36);
+    background-color:rgb(228, 233, 237);
+    border-radius: 2em;
+    padding: 5%;
 }
 
 .photo-detail img{
-    margin:auto;
-    width: 40em;
+    display:block;
+    width: 55em;
     height: auto;
-    align-items: center;
     margin: auto;
     box-shadow: 1px 1px .4em rgb(36, 36, 36)
 }
 
-.photo-detail button{
-    box-shadow: 1px 1px .4em rgb(36, 36, 36)
+.photo-detail h4{
+    font-size: 30px;
 }
+
+.photo-detail p{
+    padding: 0em 18px;
+    padding-top: 1em;
+    font-size: 18px;
+}
+

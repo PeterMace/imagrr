@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { editComment } from '../../store/comments';
-import { useHistory } from 'react-router-dom';
+
 
 
 const EditPhotoForm = ({comment, hideForm}) => {
@@ -9,7 +9,6 @@ const EditPhotoForm = ({comment, hideForm}) => {
     const id = comment.id;
     const userId = useSelector(state => state.session.user?.id);
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const [content, setContent] = useState(comment.content);
     const updateContent = (e) => setContent(e.target.value);
@@ -39,7 +38,7 @@ const EditPhotoForm = ({comment, hideForm}) => {
     return (
         <>
             { userId && (
-                <form onSubmit={handleSubmit} className='photo-form'>
+                <form onSubmit={handleSubmit} className='form'>
                     <h3> Update Comment</h3>
                     {errors.map((error)=>(
                         <p key={error}>{error}</p>

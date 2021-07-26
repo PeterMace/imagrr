@@ -1,0 +1,24 @@
+.landing_page{
+    background-size: 1920px 1200px;
+    background-position: center;
+    background-image:url('./../../images/homepage.jpg');
+    background-color: white;
+    display: flex;
+
+    height: 929px;
+}
+
+.app_title{
+    font-size: 6em;
+    position: relative;
+    margin-left: 40%;
+}
+
+.app_headline{
+    font-size: 3em;
+    width:45%;
+    text-align: center;
+    word-wrap: normal;
+    margin-left: -29%;
+    margin-top: 15%;
+}

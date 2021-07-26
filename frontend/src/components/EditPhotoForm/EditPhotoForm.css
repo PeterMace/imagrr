@@ -1,11 +1,41 @@
-.photo-form{
-    width: 200px;
-    height: 150px;
+.form{
+    width: auto;
+    height: auto;
     margin: 55px;
-    padding-top: 50px;
+    padding-top: 20px;
     justify-content: center;
     align-items: center;
     text-align: center;
     margin: auto;
-    box-shadow: 1px 1px .4em rgb(36, 36, 36)
+    box-shadow: 1px 1px .4em rgb(36, 36, 36);
+    background-color: #777977;
 }
+
+.form p{
+    color:rgb(255, 61, 61);
+    background-color: rgb(66, 66, 66);
+    border-radius: 3px;
+    width: 500px;
+    margin: 55px;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin:5px auto ;
+    font-family:  'Arial Narrow', Arial, sans-serif;
+    box-shadow: 1px 1px .4em rgb(36, 36, 36);
+}
+
+.form input{
+    width: 30em;
+    height: 1.5em;
+    box-shadow: 1px 1px .4em rgb(36, 36, 36);
+}
+
+.form label{
+    margin-left: 1em;
+    display: block;
+    text-align: left;
+    font-size: 1em;
+}
+

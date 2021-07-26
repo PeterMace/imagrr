@@ -8,25 +8,12 @@ const LandingPage = () => {
     
     return (
         <>
-            
-                <form  className='photo-form'>
-                    <h3> Update photo</h3>
-                   
-                    <input
-                        type="text"
-                        placeholder="Title"
-                    />
-                    <input
-                    type="text"
-                    placeholder="Image URL"
-                    />
-                    <input
-                    type="text"
-                    placeholder="description"
-                    />
-                    <button type="submit">Update photo</button>
-                </form>
-            
+
+        <div className="landing_page">
+            <p className="app_title">Imagrr </p>
+            <br />
+            <p className="app_headline">Join our community to share images and connect with others.</p>
+        </div>
         </>
    )
 };

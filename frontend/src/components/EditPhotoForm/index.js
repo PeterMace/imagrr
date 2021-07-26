@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { editPhoto } from '../../store/photos';
-import { useHistory } from 'react-router-dom';
 import './EditPhotoForm.css';
 
 
@@ -10,7 +9,6 @@ const EditPhotoForm = ({photo, hideForm}) => {
     const id = photo.id;
     const userId = useSelector(state => state.session.user?.id);
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const [title, setTitle] = useState(photo.title);
     const [imageUrl, setImageUrl] = useState(photo.imageUrl);
@@ -49,27 +47,36 @@ const EditPhotoForm = ({photo, hideForm}) => {
     return (
         <>
             { userId && (
-                <form onSubmit={handleSubmit} className='photo-form'>
-                    <h3> Update photo</h3>
+                <form onSubmit={handleSubmit} className='form'>
+                    <h4> Update photo </h4>
                     {errors.map((error)=>(
                         <p key={error}>{error}</p>
                     ))}
-
+                    <label htmlFor="title">Title</label>
                     <input
                         type="text"
+                        id="title"
                         placeholder="Title"
                         value={title}
-                        onChange={updateTitle} />
+                        onChange={updateTitle} 
+                    />
+                    <label htmlFor="url">Url</label>
                     <input
-                    type="text"
-                    placeholder="Image URL"
-                    value={imageUrl}
-                    onChange={updateImageUrl} />
+                        type="text"
+                        placeholder="Image URL"
+                        id="url"
+                        value={imageUrl}
+                        onChange={updateImageUrl} 
+                    />
+                    <label>Description</label>
                     <input
-                    type="text"
-                    placeholder="description"
-                    value={description}
-                    onChange={updateDescription} />
+                        type="textarea"
+                        id="url"
+                        placeholder="description"
+                        value={description}
+                        onChange={updateDescription} 
+                    />
+                    <br />
                     <button type="submit">Update photo</button>
                 </form>)
             }
