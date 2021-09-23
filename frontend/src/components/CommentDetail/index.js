@@ -1,14 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteComment } from '../../store/comments';
-import { useHistory } from 'react-router-dom';
 import EditCommentForm from '../EditCommentForm';
 
 const CommentDetail = ({comment}) => {
     //const photos = useSelector(state => state.photos);
     const userId = useSelector(state => state.session.user?.id);
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const [showEditForm, setShowEditForm] = useState(false);
 
@@ -16,7 +14,7 @@ const CommentDetail = ({comment}) => {
     
     const handleDelete = async (e) => {
         e.preventDefault();
-        const dispatchPhoto = await dispatch(deleteComment(comment));
+        await dispatch(deleteComment(comment));
     }
     
     if (!comment) {

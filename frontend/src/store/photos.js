@@ -51,7 +51,6 @@ export const createPhoto = (Photo) => async dispatch => {
     return photoResult;
   }
   else{
-    console.log("NO PHOTO CREATED")
     const errorResponse = await response.json();
     return errorResponse;
   }
@@ -114,7 +113,6 @@ export const deletePhoto = (photo) => async dispatch => {
       }
       case REMOVE_ONE: {
           const newState = { ...state };
-          console.log("photoId", action.photoId)
           delete newState[ action.photoId];
           return newState;
         }

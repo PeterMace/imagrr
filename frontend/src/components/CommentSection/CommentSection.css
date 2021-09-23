@@ -1,0 +1,10 @@
+.comment-detail{
+    margin: 0 0;
+}
+
+#comment {
+    border: 3px solid #666666;
+    font: 1.6em;
+    background-color: #abafa6;
+    color: #141f15;
+}

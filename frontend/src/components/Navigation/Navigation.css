@@ -3,6 +3,17 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(32, 32, 32, .75);
-    height:10%;
-    box-shadow: 1px 1px .4em rgb(36, 36, 36)
+    height:3em;
+    box-shadow: 1px 1px .4em rgb(36, 36, 36);
+}
+
+a{
+    padding: 2em;
+    color: white;
+    text-decoration: none;
+    font-size: large;
+
+}
+ul{
+    list-style-type: none;
 }

@@ -2,10 +2,10 @@
     display: flex;
     align-content: center;
     justify-content: center;
-    margin: auto 20%;
-    padding: 5%;
+    margin: 3em 15%;
+    padding: 1%;
     height: auto;
-    margin-top: 10px;
+    margin-top: 3em;
     border-radius: 10px;
     background-color: #c8c8c8;
     box-shadow: 1px 1px .4em rgb(36, 36, 36), -1px -1px .4em rgb(36, 36, 36);
@@ -14,10 +14,10 @@
 
 .browser-image {
     background-size: contain;
-    border: 3px solid #DFDFDF;
-    height: 67px;
-    margin: 15px;
-    width: 100px;
+    border: 5px solid #DFDFDF;
+    height: 330px;
+    margin: 5px;
+    width: 495px;
     box-shadow: 1px 1px .4em rgb(36, 36, 36), -1px -1px .4em rgb(36, 36, 36);
   }
 

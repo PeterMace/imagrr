@@ -22,7 +22,7 @@ export const PhotoDetail = () => {
     useEffect(() => {
         async function fetchData() {
             try{
-                const response = await dispatch(retrievePhoto(photoId));
+                await dispatch(retrievePhoto(photoId));
             } catch (err){
                 console.log("Photo of specified ID cannot be retrieved at this time");
                 history.push("/photos");
@@ -35,7 +35,7 @@ export const PhotoDetail = () => {
 
     const handleDelete = async (e) => {
         e.preventDefault();
-        const dispatchPhoto = await dispatch(deletePhoto(selectedPhoto));
+        await dispatch(deletePhoto(selectedPhoto));
         history.push("/photos");
     }
 
@@ -51,16 +51,17 @@ export const PhotoDetail = () => {
     }
 
     return (
-        <div className="photo-detail">
-            {console.log(photos, "photo")}
-            <h4> {selectedPhoto.title} </h4>
-            <img src={selectedPhoto.imageUrl} />
-            <p>{selectedPhoto.description}</p>
-            {selectedPhoto.userId === userId ? <button onClick={() => setShowEditForm(!showEditForm)}>Edit Photo</button> : null}
-            {selectedPhoto.userId === userId ? <button onClick={handleDelete}>Delete Photo</button> : null}
-            {content}
-            <CommentSection photoId = {selectedPhoto.id} />
-            <CreateCommentForm photoId = {selectedPhoto.id} />
+        <div className="photo-detail-container">
+            <div className="photo-detail">
+                <h4> {selectedPhoto.title} </h4>
+                <img src={selectedPhoto.imageUrl} alt="" />
+                <p>{selectedPhoto.description}</p>
+                {selectedPhoto.userId === userId ? <button onClick={() => setShowEditForm(!showEditForm)}>Edit Photo</button> : null}
+                {selectedPhoto.userId === userId ? <button onClick={handleDelete}>Delete Photo</button> : null}
+                {content}
+                <CommentSection photoId = {selectedPhoto.id} />
+                <CreateCommentForm photoId = {selectedPhoto.id} />
+            </div>
         </div>
     )
 }

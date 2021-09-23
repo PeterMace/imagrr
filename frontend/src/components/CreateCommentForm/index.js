@@ -41,8 +41,7 @@ const CreateCommentForm = ({photoId}) => {
     return (
         <>
             { userId && (
-                <form onSubmit={handleSubmit} className='photo-form'>
-                    <h3> Comments </h3>
+                <form onSubmit={handleSubmit} className='form'>
                     {errors.map((error)=>(
                         <p key={error}>{error}</p>
                     ))}
